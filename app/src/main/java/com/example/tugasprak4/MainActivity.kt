@@ -108,5 +108,25 @@ fun BiodataScreen() {
         R.drawable.img
     )
     val pagerState = rememberPagerState(pageCount = { banners.size })
+    // Box terluar: Scaffold di lapisan bawah, Box form "mengapung" di atasnya
+    Box(modifier = Modifier.fillMaxSize()) {
 
+        // ===== LAPISAN BAWAH: Scaffold + carousel gambar =====
+        Scaffold(
+            containerColor = colorResource(R.color.screen_background)
+        ) { innerPadding ->
+            Box(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .fillMaxWidth()
+                    .height(dimensionResource(R.dimen.banner_height))
+            ) {
+                HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { page ->
+                    Image(
+                        painter = painterResource(banners[page]),
+                        contentDescription = stringResource(R.string.cd_banner),
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
 
