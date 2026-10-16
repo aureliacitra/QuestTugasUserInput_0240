@@ -7,3 +7,8 @@
     <string name="label_last_name">Nama Belakang</string>
     <string name="label_email">Email</string>
     <string name="label_birth_date">Tgl Lahir</string>
+    <string name="label_experience">Experience</string>
+    <string name="label_skill">Pilih Skill Anda :</string>
+    <string name="skill_android">Android</string>
+    <string name="skill_uiux">UI/UX</string>
+    <string name="skill_web">Web</string>
