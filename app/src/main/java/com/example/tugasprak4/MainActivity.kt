@@ -189,5 +189,32 @@ fun BiodataScreen() {
                         textAlign = TextAlign.Center
                     )
                     Spacer(Modifier.height(dimensionResource(R.dimen.spacing_large)))
+                    // Nama depan & belakang
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
+                    ) {
+                        FormField(
+                            value = firstName,
+                            onValueChange = { firstName = it },
+                            label = stringResource(R.string.label_first_name),
+                            modifier = Modifier.weight(1f)
+                        )
+                        FormField(
+                            value = lastName,
+                            onValueChange = { lastName = it },
+                            label = stringResource(R.string.label_last_name),
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                    Spacer(Modifier.height(dimensionResource(R.dimen.spacing_medium)))
 
+                    // Email
+                    FormField(
+                        value = email,
+                        onValueChange = { email = it },
+                        label = stringResource(R.string.label_email),
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    Spacer(Modifier.height(dimensionResource(R.dimen.spacing_medium)))
 
