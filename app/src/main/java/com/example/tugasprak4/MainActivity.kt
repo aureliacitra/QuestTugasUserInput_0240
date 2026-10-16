@@ -361,3 +361,52 @@ private fun DateField(
         }
     }
 }
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ExperienceDropdown(
+    value: String,
+    onSelected: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var expanded by remember { mutableStateOf(false) }
+    val options = stringArrayResource(R.array.experience_options)
+
+    ExposedDropdownMenuBox(
+        expanded = expanded,
+        onExpandedChange = { expanded = it },
+        modifier = modifier
+    ) {
+        OutlinedTextField(
+            value = value,
+            onValueChange = {},
+            readOnly = true,
+            placeholder = {
+                Text(
+                    stringResource(R.string.label_experience),
+                    color = colorResource(R.color.text_primary)
+                )
+            },
+            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+            singleLine = true,
+            shape = RoundedCornerShape(dimensionResource(R.dimen.field_corner)),
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = colorResource(R.color.card_background),
+                unfocusedContainerColor = colorResource(R.color.card_background),
+                focusedIndicatorColor = colorResource(R.color.purple_primary),
+                unfocusedIndicatorColor = colorResource(R.color.outline_gray)
+            ),
+            modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable)
+        )
+        ExposedDropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
+            options.forEach { option ->
+                DropdownMenuItem(
+                    text = { Text(option) },
+                    onClick = {
+                        onSelected(option)
+                        expanded = false
+                    }
+                )
+            }
+        }
+    }
+}
