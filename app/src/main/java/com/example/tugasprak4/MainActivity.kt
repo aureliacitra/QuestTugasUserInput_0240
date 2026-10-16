@@ -150,6 +150,30 @@ fun BiodataScreen() {
                     }
                 }
             }
-        }
+        }        // ===== LAPISAN ATAS: Box form mengapung di atas Scaffold =====
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(top = dimensionResource(R.dimen.card_top_offset)),
+            contentAlignment = Alignment.BottomCenter
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(
+                        RoundedCornerShape(
+                            topStart = dimensionResource(R.dimen.card_corner),
+                            topEnd = dimensionResource(R.dimen.card_corner)
+                        )
+                    )
+                    .background(colorResource(R.color.card_background))
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState())
+                        .padding(dimensionResource(R.dimen.card_padding)),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                )
 
 
