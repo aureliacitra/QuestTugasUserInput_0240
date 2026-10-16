@@ -100,3 +100,13 @@ fun BiodataScreen() {
             experience.isNotBlank() &&
             selectedSkills.isNotEmpty()
 
+    // ---- Gambar banner (img.png di res/drawable) ----
+    val banners = listOf(
+        R.drawable.img,
+        R.drawable.img,
+        R.drawable.img,
+        R.drawable.img
+    )
+    val pagerState = rememberPagerState(pageCount = { banners.size })
+
+
