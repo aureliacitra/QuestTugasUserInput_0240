@@ -16,3 +16,6 @@
     <string name="date_format">dd/MM/yyyy</string>
     <string name="cd_pick_date">Pilih tanggal</string>
     <string name="cd_banner">Gambar banner</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Batal</string>
+    <string name="toast_success">Biodata berhasil dikirim</string>
