@@ -269,3 +269,32 @@ fun BiodataScreen() {
                         }
                     }
                     Spacer(Modifier.height(dimensionResource(R.dimen.spacing_large)))
+                    // Tombol Proceed
+                    val successMessage = stringResource(R.string.toast_success)
+                    Button(
+                        onClick = {
+                            Toast.makeText(context, successMessage, Toast.LENGTH_SHORT).show()
+                        },
+                        enabled = isFormValid,
+                        shape = RoundedCornerShape(dimensionResource(R.dimen.button_corner)),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(R.color.purple_primary),
+                            contentColor = colorResource(R.color.button_text),
+                            disabledContainerColor = colorResource(R.color.button_disabled),
+                            disabledContentColor = colorResource(R.color.button_disabled_text)
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(dimensionResource(R.dimen.button_height))
+                    ) {
+                        Text(
+                            text = stringResource(R.string.button_proceed),
+                            fontSize = spResource(R.dimen.button_text_size),
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
