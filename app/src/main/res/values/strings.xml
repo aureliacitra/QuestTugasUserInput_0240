@@ -12,3 +12,7 @@
     <string name="skill_android">Android</string>
     <string name="skill_uiux">UI/UX</string>
     <string name="skill_web">Web</string>
+    <string name="button_proceed">Proceed</string>
+    <string name="date_format">dd/MM/yyyy</string>
+    <string name="cd_pick_date">Pilih tanggal</string>
+    <string name="cd_banner">Gambar banner</string>
