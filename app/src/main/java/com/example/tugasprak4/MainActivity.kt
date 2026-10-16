@@ -234,3 +234,38 @@ fun BiodataScreen() {
                         )
                     }
                     Spacer(Modifier.height(dimensionResource(R.dimen.spacing_medium)))
+                    // Skill
+                    Text(
+                        text = stringResource(R.string.label_skill),
+                        color = colorResource(R.color.text_primary),
+                        fontSize = spResource(R.dimen.label_size),
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        listOf(
+                            stringResource(R.string.skill_android),
+                            stringResource(R.string.skill_uiux),
+                            stringResource(R.string.skill_web)
+                        ).forEach { skill ->
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Checkbox(
+                                    checked = skill in selectedSkills,
+                                    onCheckedChange = { checked ->
+                                        if (checked) selectedSkills.add(skill)
+                                        else selectedSkills.remove(skill)
+                                    }
+                                )
+                                Text(
+                                    text = skill,
+                                    color = colorResource(R.color.text_primary),
+                                    fontSize = spResource(R.dimen.skill_text_size)
+                                )
+                            }
+                        }
+                    }
+                    Spacer(Modifier.height(dimensionResource(R.dimen.spacing_large)))
