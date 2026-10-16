@@ -3,3 +3,7 @@
     <string name="app_name">Form Biodata</string>
     <string name="form_title">Form Biodata</string>
     <string name="form_subtitle">Silahkan isi biodata Anda dibawah ini !!!</string>
+    <string name="label_first_name">Nama Depan</string>
+    <string name="label_last_name">Nama Belakang</string>
+    <string name="label_email">Email</string>
+    <string name="label_birth_date">Tgl Lahir</string>
