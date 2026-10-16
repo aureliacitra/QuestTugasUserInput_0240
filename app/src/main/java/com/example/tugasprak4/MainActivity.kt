@@ -129,4 +129,27 @@ fun BiodataScreen() {
                         modifier = Modifier.fillMaxSize()
                     )
                 }
+                // Indikator titik
+                Row(
+                    modifier = Modifier
+                        .align(Alignment.TopStart)
+                        .padding(dimensionResource(R.dimen.dot_padding)),
+                    horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.dot_spacing))
+                ) {
+                    repeat(banners.size) { index ->
+                        val dotColor = if (pagerState.currentPage == index)
+                            colorResource(R.color.dot_active)
+                        else
+                            colorResource(R.color.dot_inactive)
+                        Box(
+                            modifier = Modifier
+                                .size(dimensionResource(R.dimen.dot_size))
+                                .clip(CircleShape)
+                                .background(dotColor)
+                        )
+                    }
+                }
+            }
+        }
+
 
