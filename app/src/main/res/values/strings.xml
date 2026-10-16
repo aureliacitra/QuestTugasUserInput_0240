@@ -19,3 +19,11 @@
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Batal</string>
     <string name="toast_success">Biodata berhasil dikirim</string>
+
+    <string-array name="experience_options">
+        <item>&lt; 1 Tahun</item>
+        <item>1 - 3 Tahun</item>
+        <item>3 - 5 Tahun</item>
+        <item>&gt; 5 Tahun</item>
+    </string-array>
+</resources>
