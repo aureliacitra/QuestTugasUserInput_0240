@@ -64,3 +64,24 @@ import androidx.compose.ui.unit.TextUnitType
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MaterialTheme {
+                BiodataScreen()
+            }
+        }
+    }
+}
+
+/** Helper: ukuran font dari dimens.xml (dimen sp -> TextUnit) tanpa hardcode. */
+@Composable
+private fun spResource(id: Int): TextUnit =
+    TextUnit(dimensionResource(id).value, TextUnitType.Sp)
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BiodataScreen() {
+    val context = LocalContext.current
