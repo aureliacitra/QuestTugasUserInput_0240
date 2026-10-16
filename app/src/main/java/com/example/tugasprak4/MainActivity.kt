@@ -298,3 +298,66 @@ fun BiodataScreen() {
         }
     }
 }
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun DateField(
+    value: String,
+    onDateSelected: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var showDialog by remember { mutableStateOf(false) }
+    val datePickerState = rememberDatePickerState()
+    val pattern = stringResource(R.string.date_format)
+
+    OutlinedTextField(
+        value = value,
+        onValueChange = {},
+        readOnly = true,
+        placeholder = {
+            Text(
+                stringResource(R.string.label_birth_date),
+                color = colorResource(R.color.text_primary)
+            )
+        },
+        trailingIcon = {
+            IconButton(onClick = { showDialog = true }) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_calendar),
+                    contentDescription = stringResource(R.string.cd_pick_date)
+                )
+            }
+        },
+        singleLine = true,
+        shape = RoundedCornerShape(dimensionResource(R.dimen.field_corner)),
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = colorResource(R.color.card_background),
+            unfocusedContainerColor = colorResource(R.color.card_background),
+            focusedIndicatorColor = colorResource(R.color.purple_primary),
+            unfocusedIndicatorColor = colorResource(R.color.outline_gray)
+        ),
+        modifier = modifier
+    )
+
+    if (showDialog) {
+        DatePickerDialog(
+            onDismissRequest = { showDialog = false },
+            confirmButton = {
+                TextButton(onClick = {
+                    datePickerState.selectedDateMillis?.let { millis ->
+                        onDateSelected(
+                            SimpleDateFormat(pattern, Locale.getDefault()).format(Date(millis))
+                        )
+                    }
+                    showDialog = false
+                }) { Text(stringResource(R.string.dialog_ok)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDialog = false }) {
+                    Text(stringResource(R.string.dialog_cancel))
+                }
+            }
+        ) {
+            DatePicker(state = datePickerState)
+        }
+    }
+}
