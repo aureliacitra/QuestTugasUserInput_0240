@@ -85,6 +85,7 @@ private fun spResource(id: Int): TextUnit =
 @Composable
 fun BiodataScreen() {
     val context = LocalContext.current
+
     // ---- State form ----
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
@@ -108,6 +109,7 @@ fun BiodataScreen() {
         R.drawable.img
     )
     val pagerState = rememberPagerState(pageCount = { banners.size })
+
     // Box terluar: Scaffold di lapisan bawah, Box form "mengapung" di atasnya
     Box(modifier = Modifier.fillMaxSize()) {
 
@@ -129,6 +131,7 @@ fun BiodataScreen() {
                         modifier = Modifier.fillMaxSize()
                     )
                 }
+
                 // Indikator titik
                 Row(
                     modifier = Modifier
@@ -150,7 +153,9 @@ fun BiodataScreen() {
                     }
                 }
             }
-        }        // ===== LAPISAN ATAS: Box form mengapung di atas Scaffold =====
+        }
+
+        // ===== LAPISAN ATAS: Box form mengapung di atas Scaffold =====
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -174,7 +179,7 @@ fun BiodataScreen() {
                         .verticalScroll(rememberScrollState())
                         .padding(dimensionResource(R.dimen.card_padding)),
                     horizontalAlignment = Alignment.CenterHorizontally
-                ){
+                ) {
                     Text(
                         text = stringResource(R.string.form_title),
                         color = colorResource(R.color.purple_title),
@@ -189,6 +194,7 @@ fun BiodataScreen() {
                         textAlign = TextAlign.Center
                     )
                     Spacer(Modifier.height(dimensionResource(R.dimen.spacing_large)))
+
                     // Nama depan & belakang
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -217,7 +223,8 @@ fun BiodataScreen() {
                         modifier = Modifier.fillMaxWidth()
                     )
                     Spacer(Modifier.height(dimensionResource(R.dimen.spacing_medium)))
-// Tgl lahir & Experience
+
+                    // Tgl lahir & Experience
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.spacing_small))
@@ -234,6 +241,7 @@ fun BiodataScreen() {
                         )
                     }
                     Spacer(Modifier.height(dimensionResource(R.dimen.spacing_medium)))
+
                     // Skill
                     Text(
                         text = stringResource(R.string.label_skill),
@@ -269,6 +277,7 @@ fun BiodataScreen() {
                         }
                     }
                     Spacer(Modifier.height(dimensionResource(R.dimen.spacing_large)))
+
                     // Tombol Proceed
                     val successMessage = stringResource(R.string.toast_success)
                     Button(
@@ -298,6 +307,31 @@ fun BiodataScreen() {
         }
     }
 }
+
+/** TextField outline dengan sudut membulat (dipakai berulang). */
+@Composable
+private fun FormField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    modifier: Modifier = Modifier
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        placeholder = { Text(label, color = colorResource(R.color.text_primary)) },
+        singleLine = true,
+        shape = RoundedCornerShape(dimensionResource(R.dimen.field_corner)),
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = colorResource(R.color.card_background),
+            unfocusedContainerColor = colorResource(R.color.card_background),
+            focusedIndicatorColor = colorResource(R.color.purple_primary),
+            unfocusedIndicatorColor = colorResource(R.color.outline_gray)
+        ),
+        modifier = modifier
+    )
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun DateField(
@@ -361,6 +395,7 @@ private fun DateField(
         }
     }
 }
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ExperienceDropdown(
